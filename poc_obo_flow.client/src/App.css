@@ -1,0 +1,69 @@
+﻿#root {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.shell {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.eyebrow {
+    color: #4f46e5;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.panel {
+    border: 1px solid #d8dee9;
+    border-radius: 12px;
+    padding: 1.25rem;
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+.actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.button,
+button {
+    border: 0;
+    border-radius: 8px;
+    background: #2563eb;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    font: inherit;
+    padding: 0.7rem 1rem;
+    text-decoration: none;
+}
+
+button.secondary {
+    background: #475569;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    text-align: left;
+}
+
+th, td {
+    border-bottom: 1px solid #e2e8f0;
+    padding: 0.65rem;
+    vertical-align: top;
+}
+
+.claim-value {
+    font-family: Consolas, 'Courier New', monospace;
+    overflow-wrap: anywhere;
+}

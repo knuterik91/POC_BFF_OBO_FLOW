@@ -1,0 +1,6 @@
+@POC_OBO_FLOW.Server_HostAddress = http://localhost:5149
+
+GET {{POC_OBO_FLOW.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

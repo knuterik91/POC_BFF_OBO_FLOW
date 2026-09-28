@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="POC_OBO_FLOW.Api/POC_OBO_FLOW.Api.csproj" />
+  <Project Path="poc_obo_flow.client/poc_obo_flow.client.esproj">
+    <Build />
+    <Deploy />
+  </Project>
+  <Project Path="POC_OBO_FLOW.Server/POC_OBO_FLOW.Server.csproj" />
+</Solution>
