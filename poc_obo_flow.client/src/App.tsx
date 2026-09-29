@@ -20,9 +20,17 @@ interface Order {
     orderedOn: string;
 }
 
+interface GraphMe {
+    id?: string;
+    displayName?: string;
+    userPrincipalName?: string;
+    mail?: string;
+}
+
 interface OrdersApiResponse {
     orders: Order[];
     apiClaims: Claim[];
+    graphMe?: GraphMe | null;
 }
 
 interface CsrfResponse {
@@ -96,6 +104,24 @@ function App() {
                                 ))}
                             </tbody>
                         </table>
+                    </section>
+
+                    <section className="panel">
+                        <h2>Microsoft Graph /me via API OBO</h2>
+                        {ordersResponse.graphMe ? (
+                            <dl className="details-list">
+                                <dt>Display name</dt>
+                                <dd>{ordersResponse.graphMe.displayName ?? 'Ikke satt'}</dd>
+                                <dt>User principal name</dt>
+                                <dd>{ordersResponse.graphMe.userPrincipalName ?? 'Ikke satt'}</dd>
+                                <dt>Mail</dt>
+                                <dd>{ordersResponse.graphMe.mail ?? 'Ikke satt'}</dd>
+                                <dt>Graph id</dt>
+                                <dd>{ordersResponse.graphMe.id ?? 'Ikke satt'}</dd>
+                            </dl>
+                        ) : (
+                            <p>Ingen Graph-data returnert fra API-et.</p>
+                        )}
                     </section>
 
                     <section className="panel">

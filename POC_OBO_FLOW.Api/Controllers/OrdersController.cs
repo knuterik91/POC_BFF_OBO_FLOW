@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Identity.Abstractions;
 using POC_OBO_FLOW.Api.Models;
 
 namespace POC_OBO_FLOW.Api.Controllers;
@@ -8,10 +9,10 @@ namespace POC_OBO_FLOW.Api.Controllers;
 [Authorize(Policy = "access_as_user")]
 [Authorize(Policy = "Les")]
 [Route("api/orders")]
-public sealed class OrdersController : ControllerBase
+public sealed class OrdersController(IDownstreamApi downstreamApi) : ControllerBase
 {
     [HttpGet]
-    public ActionResult<OrdersApiResponse> GetOrders()
+    public async Task<ActionResult<OrdersApiResponse>> GetOrders(CancellationToken cancellationToken)
     {
         var orders = new[]
         {
@@ -24,6 +25,11 @@ public sealed class OrdersController : ControllerBase
             .OrderBy(claim => claim.Type)
             .ToArray();
 
-        return Ok(new OrdersApiResponse(orders, claims));
+        var graphMe = await downstreamApi.GetForUserAsync<GraphMeDto>(
+            "Graph",
+            options => options.RelativePath = "me",
+            cancellationToken: cancellationToken);
+
+        return Ok(new OrdersApiResponse(orders, claims, graphMe));
     }
 }

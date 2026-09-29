@@ -9,6 +9,13 @@ public sealed record OrderDto(
 
 public sealed record ApiClaimDto(string Type, string Value);
 
+public sealed record GraphMeDto(
+    string? Id,
+    string? DisplayName,
+    string? UserPrincipalName,
+    string? Mail);
+
 public sealed record OrdersApiResponse(
     IReadOnlyList<OrderDto> Orders,
-    IReadOnlyList<ApiClaimDto> ApiClaims);
+    IReadOnlyList<ApiClaimDto> ApiClaims,
+    GraphMeDto? GraphMe);

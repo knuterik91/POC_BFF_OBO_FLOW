@@ -36,7 +36,11 @@ builder.Services
                 return Task.CompletedTask;
             }
         };
-    }, options => builder.Configuration.Bind("AzureAd", options));
+    }, options => builder.Configuration.Bind("AzureAd", options))
+    .EnableTokenAcquisitionToCallDownstreamApi(options => builder.Configuration.Bind("AzureAd", options))
+    .AddInMemoryTokenCaches();
+
+builder.Services.AddDownstreamApi("Graph", builder.Configuration.GetSection("Graph"));
 
 builder.Services.AddAuthorization(options =>
 {

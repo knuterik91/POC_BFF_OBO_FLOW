@@ -67,3 +67,19 @@ th, td {
     font-family: Consolas, 'Courier New', monospace;
     overflow-wrap: anywhere;
 }
+
+.details-list {
+    display: grid;
+    gap: 0.5rem 1rem;
+    grid-template-columns: max-content 1fr;
+    margin: 0;
+}
+
+.details-list dt {
+    font-weight: 700;
+}
+
+.details-list dd {
+    margin: 0;
+    overflow-wrap: anywhere;
+}
